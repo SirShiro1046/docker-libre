@@ -9,7 +9,7 @@ export default function Sidebar({ onSelect, selected }) {
                         className={`side-button${selected === 'containers' ? ' active' : ''}`}
                         onClick={() => onSelect('containers')}
                     >
-                        <i class="bi bi-box"></i> Containers
+                        <i className="bi bi-box icon-aside"></i> Containers
                     </button>
                 </li>
                 <li>
@@ -17,7 +17,7 @@ export default function Sidebar({ onSelect, selected }) {
                         className={`side-button${selected === 'images' ? ' active' : ''}`}
                         onClick={() => onSelect('images')}
                     >
-                        <i class="bi bi-boxes"></i>
+                        <i className="bi bi-boxes icon-aside"></i>
                         Images
                     </button>
                 </li>
@@ -26,7 +26,7 @@ export default function Sidebar({ onSelect, selected }) {
                         className={`side-button${selected === 'volumes' ? ' active' : ''}`}
                         onClick={() => onSelect('volumes')}
                     >
-                        <i class="bi bi-hdd"></i>
+                        <i className="bi bi-hdd icon-aside"></i>
                         Volumes
                     </button>
                 </li>
@@ -35,7 +35,7 @@ export default function Sidebar({ onSelect, selected }) {
                         className={`side-button${selected === 'networks' ? ' active' : ''}`}
                         onClick={() => onSelect('networks')}
                     >
-                        <i class="bi bi-hdd-network"></i>
+                        <i className="bi bi-hdd-network icon-aside"></i>
                         Networks
                     </button>
                 </li>

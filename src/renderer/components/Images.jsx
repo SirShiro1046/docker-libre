@@ -38,10 +38,9 @@ export default function Images() {
     return (
         <div>
             <h3>Imágenes Docker</h3>
-            <table className="table">
+            <table className="table table-datos">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">ID</th>
                         <th scope="col">RepoTags</th>
                         <th scope="col">Tamaño</th>
@@ -50,7 +49,6 @@ export default function Images() {
                 <tbody>
                     {sortedImages.map((img, idx) => (
                         <tr key={img.Id}>
-                            <th scope="row">{idx + 1}</th>
                             <td>{img.Id.slice(0, 12)}</td>
                             <td>{img.RepoTags ? img.RepoTags.join(', ') : '(sin tag)'}</td>
                             <td>{(img.Size / (1024 * 1024)).toFixed(2)} MB</td>

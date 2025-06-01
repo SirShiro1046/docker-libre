@@ -9,6 +9,15 @@ const docker = new Docker();
 
 app.use(cors());
 
+
+app.get('/api/containers/basic', async (req, res) => {
+    try {
+        const containers = await docker.listContainers({ all: true });
+        res.json(containers);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
 // Rutas REST
 app.get('/api/containers', async (req, res) => {
     try {
@@ -110,5 +119,24 @@ setInterval(async () => {
         console.error('Error al emitir contenedores:', err);
     }
 }, 2000);
+
+app.post('/api/containers/:id/start', async (req, res) => {
+    try {
+        const container = docker.getContainer(req.params.id);
+        await container.start();
+        res.json({ ok: true });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+app.post('/api/containers/:id/stop', async (req, res) => {
+    try {
+        const container = docker.getContainer(req.params.id);
+        await container.stop();
+        res.json({ ok: true });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
 
 server.listen(3001, () => console.log('API y WebSocket en http://localhost:3001'));

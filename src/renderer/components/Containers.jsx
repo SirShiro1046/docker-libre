@@ -6,6 +6,19 @@ export default function Containers() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const handleToggleContainer = async (id, running) => {
+        const action = running ? 'stop' : 'start';
+        try {
+            await fetch(`http://localhost:3001/api/containers/${id}/${action}`, { method: 'POST' });
+            // Refresca la tabla rápido con la lista básica (sin CPU)
+            fetch('http://localhost:3001/api/containers/basic')
+                .then(res => res.json())
+                .then(data => setContainers(data));
+        } catch (err) {
+            alert(`No se pudo ${running ? 'detener' : 'iniciar'} el contenedor`);
+        }
+    };
+
     useEffect(() => {
         // Carga inicial rápida con REST
         fetch('http://localhost:3001/api/containers')
@@ -40,7 +53,8 @@ export default function Containers() {
     return (
         <div>
             <h3>Contenedores Docker</h3>
-            <table className="table">
+                        // ...existing code...
+            <table className="table table-datos">
                 <thead>
                     <tr>
                         <th scope="col">Nombre</th>
@@ -49,6 +63,7 @@ export default function Containers() {
                         <th scope="col">Puertos</th>
                         <th scope="col">CPU (%)</th>
                         <th scope="col">Estado</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,10 +75,19 @@ export default function Containers() {
                             <td>{formatPorts(c.Ports)}</td>
                             <td>{typeof c.cpu === 'number' ? c.cpu.toFixed(2) : '—'}</td>
                             <td>{c.Status}</td>
+                            <td>
+                                <button
+                                    className={`btn btn-sm ${c.State === 'running' ? 'btn-danger' : 'btn-success'}`}
+                                    onClick={() => handleToggleContainer(c.Id, c.State === 'running')}
+                                >
+                                    {c.State === 'running' ? 'Stop' : 'Run'}
+                                </button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            // ...existing code...
         </div>
     );
 }

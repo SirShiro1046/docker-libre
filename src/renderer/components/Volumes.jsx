@@ -33,10 +33,9 @@ export default function Volumes() {
     return (
         <div>
             <h3>Volúmenes Docker</h3>
-            <table className="table">
+            <table className="table table-datos">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Driver</th>
                         <th scope="col">Mountpoint</th>
@@ -45,7 +44,6 @@ export default function Volumes() {
                 <tbody>
                     {sortedVolumes.map((v, idx) => (
                         <tr key={v.Name}>
-                            <th scope="row">{idx + 1}</th>
                             <td>{v.Name}</td>
                             <td>{v.Driver}</td>
                             <td>{v.Mountpoint}</td>

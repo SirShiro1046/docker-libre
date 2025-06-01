@@ -29,7 +29,7 @@ export default function App() {
             <Nav />
             <div style={{ display: 'flex', height: '90vh' }}>
                 <Sidebar onSelect={setSelected} selected={selected} />
-                <main style={{ flex: 1, padding: '2rem' }}>
+                <main className="container-app" style={{ flex: 1, padding: '2rem'}}>
                     <Content />
                 </main>
             </div>

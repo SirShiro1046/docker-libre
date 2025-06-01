@@ -34,10 +34,9 @@ export default function Networks() {
     return (
         <div>
             <h3>Redes Docker</h3>
-            <table className="table">
+            <table className="table table-datos">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">ID</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Driver</th>
@@ -47,7 +46,6 @@ export default function Networks() {
                 <tbody>
                     {sortedNetworks.map((n, idx) => (
                         <tr key={n.Id}>
-                            <th scope="row">{idx + 1}</th>
                             <td>{n.Id.slice(0, 12)}</td>
                             <td>{n.Name}</td>
                             <td>{n.Driver}</td>
