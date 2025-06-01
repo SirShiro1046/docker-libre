@@ -88,7 +88,24 @@ setInterval(async () => {
 setInterval(async () => {
     try {
         const containers = await docker.listContainers({ all: true });
-        io.emit('containers', containers);
+        // Obtener stats de cada contenedor
+        const containersWithCpu = await Promise.all(containers.map(async c => {
+            try {
+                const container = docker.getContainer(c.Id);
+                const stats = await container.stats({ stream: false });
+                // Calcular el uso de CPU
+                const cpuDelta = stats.cpu_stats.cpu_usage.total_usage - stats.precpu_stats.cpu_usage.total_usage;
+                const systemDelta = stats.cpu_stats.system_cpu_usage - stats.precpu_stats.system_cpu_usage;
+                let cpu = 0;
+                if (systemDelta > 0 && cpuDelta > 0) {
+                    cpu = (cpuDelta / systemDelta) * stats.cpu_stats.online_cpus * 100;
+                }
+                return { ...c, cpu };
+            } catch {
+                return { ...c, cpu: null };
+            }
+        }));
+        io.emit('containers', containersWithCpu);
     } catch (err) {
         console.error('Error al emitir contenedores:', err);
     }

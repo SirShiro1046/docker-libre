@@ -28,7 +28,7 @@ export default function App() {
         <div>
             <Nav />
             <div style={{ display: 'flex', height: '90vh' }}>
-                <Sidebar onSelect={setSelected} />
+                <Sidebar onSelect={setSelected} selected={selected} />
                 <main style={{ flex: 1, padding: '2rem' }}>
                     <Content />
                 </main>
