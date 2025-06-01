@@ -53,7 +53,6 @@ export default function Containers() {
     return (
         <div>
             <h3>Contenedores Docker</h3>
-                        // ...existing code...
             <table className="table table-datos">
                 <thead>
                     <tr>
@@ -87,7 +86,7 @@ export default function Containers() {
                     ))}
                 </tbody>
             </table>
-            // ...existing code...
+
         </div>
     );
 }
