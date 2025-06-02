@@ -92,3 +92,46 @@ html, body {
     min-height: 0;
     overflow-y: auto;
 }
+
+/* Scrollbar personalizado para .table-section */
+/* WebKit (Chrome, Edge, Safari) */
+.table-section::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Scroll horizontal */
+.table-section::-webkit-scrollbar:horizontal {
+  height: 4px;
+}
+
+.table-section::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.table-section::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+
+
+.table-section::-webkit-scrollbar-corner {
+  background: transparent; /* O el color oscuro que estés usando */
+}
+
+
+.table-section:hover::-webkit-scrollbar-thumb {
+  background: #7a7aa2ab;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+}
+
+.table-section:hover::-webkit-scrollbar-track {
+    background: #1e222a;
+}
+
+.table-section:hover::-webkit-scrollbar-corner {
+  background: #1e222a; /* O el color oscuro que estés usando */
+}
