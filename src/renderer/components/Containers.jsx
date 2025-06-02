@@ -51,42 +51,43 @@ export default function Containers() {
             : '—';
 
     return (
-        <div>
+        <div className="main-content">
             <h3>Contenedores Docker</h3>
-            <table className="table table-datos">
-                <thead>
-                    <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Imagen</th>
-                        <th scope="col">Puertos</th>
-                        <th scope="col">CPU (%)</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {sortedContainers.map((c) => (
-                        <tr key={c.Id}>
-                            <td>{c.Names.map(n => n.replace(/^\//, '')).join(', ')}</td>
-                            <td>{c.Id.slice(0, 12)}</td>
-                            <td>{c.Image}</td>
-                            <td>{formatPorts(c.Ports)}</td>
-                            <td>{typeof c.cpu === 'number' ? c.cpu.toFixed(2) : '—'}</td>
-                            <td>{c.Status}</td>
-                            <td>
-                                <button
-                                    className={`btn btn-sm ${c.State === 'running' ? 'btn-danger' : 'btn-success'}`}
-                                    onClick={() => handleToggleContainer(c.Id, c.State === 'running')}
-                                >
-                                    {c.State === 'running' ? 'Stop' : 'Run'}
-                                </button>
-                            </td>
+            <section className="table-section">
+                <table className="table table-datos">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Puertos</th>
+                            <th scope="col">CPU (%)</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Acciones</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-
+                    </thead>
+                    <tbody>
+                        {sortedContainers.map((c) => (
+                            <tr key={c.Id}>
+                                <td>{c.Names.map(n => n.replace(/^\//, '')).join(', ')}</td>
+                                <td>{c.Id.slice(0, 12)}</td>
+                                <td>{c.Image}</td>
+                                <td>{formatPorts(c.Ports)}</td>
+                                <td>{typeof c.cpu === 'number' ? c.cpu.toFixed(2) : '—'}</td>
+                                <td>{c.Status}</td>
+                                <td>
+                                    <button
+                                        className={`btn btn-sm ${c.State === 'running' ? 'btn-danger' : 'btn-success'}`}
+                                        onClick={() => handleToggleContainer(c.Id, c.State === 'running')}
+                                    >
+                                        {c.State === 'running' ? 'Stop' : 'Run'}
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </section>
         </div>
     );
 }

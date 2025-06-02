@@ -31,26 +31,28 @@ export default function Volumes() {
     const sortedVolumes = [...volumes].sort((a, b) => a.Name.localeCompare(b.Name));
 
     return (
-        <div>
+        <div className="main-content">
             <h3>Volúmenes Docker</h3>
-            <table className="table table-datos">
-                <thead>
-                    <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Driver</th>
-                        <th scope="col">Mountpoint</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {sortedVolumes.map((v, idx) => (
-                        <tr key={v.Name}>
-                            <td>{v.Name}</td>
-                            <td>{v.Driver}</td>
-                            <td>{v.Mountpoint}</td>
+            <section className="table-section">
+                <table className="table table-datos">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Driver</th>
+                            <th scope="col">Mountpoint</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {sortedVolumes.map((v, idx) => (
+                            <tr key={v.Name}>
+                                <td>{v.Name}</td>
+                                <td>{v.Driver}</td>
+                                <td>{v.Mountpoint}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </section>
         </div>
     );
 }

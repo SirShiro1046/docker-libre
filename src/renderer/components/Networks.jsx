@@ -32,28 +32,30 @@ export default function Networks() {
     const sortedNetworks = [...networks].sort((a, b) => a.Name.localeCompare(b.Name));
 
     return (
-        <div>
+        <div className="main-content">
             <h3>Redes Docker</h3>
-            <table className="table table-datos">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Driver</th>
-                        <th scope="col">Scope</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {sortedNetworks.map((n, idx) => (
-                        <tr key={n.Id}>
-                            <td>{n.Id.slice(0, 12)}</td>
-                            <td>{n.Name}</td>
-                            <td>{n.Driver}</td>
-                            <td>{n.Scope}</td>
+            <section className="table-section">
+                <table className="table table-datos">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Driver</th>
+                            <th scope="col">Scope</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {sortedNetworks.map((n, idx) => (
+                            <tr key={n.Id}>
+                                <td>{n.Id.slice(0, 12)}</td>
+                                <td>{n.Name}</td>
+                                <td>{n.Driver}</td>
+                                <td>{n.Scope}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </section>
         </div>
     );
 }

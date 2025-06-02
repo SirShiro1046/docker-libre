@@ -36,26 +36,28 @@ export default function Images() {
     });
 
     return (
-        <div>
+        <div className="main-content">
             <h3>Imágenes Docker</h3>
-            <table className="table table-datos">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">RepoTags</th>
-                        <th scope="col">Tamaño</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {sortedImages.map((img, idx) => (
-                        <tr key={img.Id}>
-                            <td>{img.Id.slice(0, 12)}</td>
-                            <td>{img.RepoTags ? img.RepoTags.join(', ') : '(sin tag)'}</td>
-                            <td>{(img.Size / (1024 * 1024)).toFixed(2)} MB</td>
+            <section className="table-section">
+                <table className="table table-datos">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">RepoTags</th>
+                            <th scope="col">Tamaño</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {sortedImages.map((img, idx) => (
+                            <tr key={img.Id}>
+                                <td>{img.Id.slice(0, 12)}</td>
+                                <td>{img.RepoTags ? img.RepoTags.join(', ') : '(sin tag)'}</td>
+                                <td>{(img.Size / (1024 * 1024)).toFixed(2)} MB</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </section>
         </div>
     );
 }
