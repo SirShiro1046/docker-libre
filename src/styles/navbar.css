@@ -1,0 +1,72 @@
+.nav-component {
+    background: #080c0c;
+    background: linear-gradient(90deg, rgba(0, 28, 77, 1) 35%, rgba(34, 49, 163, 1) 100%, rgba(214, 200, 71, 1) 97%);
+    width: 100%;
+    height: 63px;
+    -webkit-app-region: drag;
+    padding-top: 11px;
+}
+
+.nav-title {
+    margin-top: 8px;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.nav-linux {
+    background-color: #00005f;
+    padding: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 0.5em;
+    font-weight: 700;
+    color: #649cc8;
+    margin-left: 0.5em;
+    border-radius: 10px;
+}
+
+.nav-button {
+    height: 40px;
+    width: 45px;
+    background: transparent;
+    border: none;
+    color: #c3bdf0;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: .4s;
+    border-radius: 3px;
+
+
+}
+
+.nav-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transition: .4s;
+}
+
+.nav-search{
+    width: 100%;
+    height: 40px;
+    background: #ffffff30;
+    border: none;
+    color: #ffffff;
+    padding-left: 10px;
+    border-radius: 3px;
+    font-size: 1rem;
+    outline: none;
+    margin-right: 5px;
+    
+}
+
+.nav-search::placeholder {
+    color: #ffffff; /* Cambia este color al que prefieras */
+    opacity: 1; /* Para que el color se aplique completamente */
+    font-weight: 400;
+
+}
